@@ -4,8 +4,9 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
-  Modalbody,
+  ModalBody,
   FormControl,
+  FormLabel,
   Input,
   RadioGroup,
   Radio,
@@ -13,15 +14,15 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const TransactionForm = () => {
+const TransactionForm = ({ onClose, isOpen }) => {
   return (
-    <Modal>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <form>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add New Transaction</ModalHeader>
           <ModalCloseButton />
-          <Modalbody>
+          <ModalBody>
             <FormControl>
               <FormLabel>Enter Description</FormLabel>
               <Input
@@ -46,9 +47,11 @@ const TransactionForm = () => {
                 Expense
               </Radio>
             </RadioGroup>
-          </Modalbody>
+          </ModalBody>
           <ModalFooter>
-            <Button mr={"4"}>Cancel</Button>
+            <Button mr={"4"} onClick={onClose}>
+              Cancel
+            </Button>
             <Button>Add</Button>
           </ModalFooter>
         </ModalContent>
